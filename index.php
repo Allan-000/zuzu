@@ -10,6 +10,7 @@
 <body>
 <?php
 require_once ('./Modules/addCustomer.php');
+require_once ('./Modules/getCustomers.php');
 session_start();
 if(isset($_POST['register'])){
     if(!empty($_POST['fname']) && !empty($_POST['lname']) && !empty($_POST['adress']) && !empty($_POST['postcode']) && !empty($_POST['place'])){
@@ -18,17 +19,31 @@ if(isset($_POST['register'])){
         $adress=filter_input(INPUT_POST,'adress',FILTER_SANITIZE_STRING);
         $postCode=filter_input(INPUT_POST,'postcode',FILTER_SANITIZE_STRING);
         $place=filter_input(INPUT_POST,'place',FILTER_SANITIZE_STRING);
-        addCustomer($fName,$lName,$adress,$place,$postCode);
-        header("Location: sushisPage.php");
-        $_SESSION['fname']=$fName;
-        $_SESSION['lname']=$lName;
-        $_SESSION['adress']=$adress;
-        $_SESSION['postcode']=$postCode;
-        $_SESSION['place']=$place;
+
     }
     else{
         echo "Niet alle velden zijn ingevuld";
     }
+    $customers=getCustomers();
+    foreach ($customers as $customer){
+        echo $customer->id;
+        if(empty($customers) && $customer->id==false){
+            echo "gebruiker bestaat niet , wordt toegevoegd";
+            $addedCustomers=addCustomer($fName,$lName,$adress,$place,$postCode);
+        }
+        else if(isset($customer->id)){
+            echo "gebruiker bestaat al";
+            $existingCustomers=getCustomers();
+        }
+    }
+
+    echo "<pre>";
+//    print_r($customers);
+    echo "</pre>";
+    echo "<br><br><br>";
+    echo "<pre>";
+    print_r($customers);
+    echo "</pre>";
 }
 ?>
 <h2>Sushi ZuZu</h2>

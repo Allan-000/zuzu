@@ -47,7 +47,7 @@ session_start();
 if(isset($_POST['order'])){
     $toOrderSushi=filter_input(INPUT_POST,'to-order-sushi');
     $toOrderAmount=filter_input(INPUT_POST,'to-order-amount',FILTER_SANITIZE_NUMBER_INT);
-
+    echo $toOrderSushi." ".$toOrderAmount;
 }
 ?>
 <h2>Plaats hieronder je bestelling</h2>
@@ -67,7 +67,10 @@ if(isset($_POST['order'])){
     <p>zie hier je bestelling lijst</p>
 </section>
 <?php
-var_dump($_SESSION);
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
 ?>
 </body>
 </html>
