@@ -10,16 +10,16 @@
         .table , .tr, .th , .td {
             border-collapse: collapse;
             border: 1px solid black;
-            padding:2px 50px;
+            padding:5px 50px;
         }
     </style>
 
 </head>
 <body>
 <?php
-require_once ('./Modules/Sushis.php');
-$sushis=getSushis();
 session_start();
+require_once ('../Modules/Sushis.php');
+$sushis=getSushis();
 ?>
 <!--tonen van sushis-->
 <h3>Sushis Lijst:</h3><br><br>
@@ -68,7 +68,7 @@ if(isset($_POST['order'])){
 </section>
 <?php
 echo "<pre>";
-print_r($_SESSION);
+print_r($_SESSION['customer']);
 echo "</pre>";
 
 ?>

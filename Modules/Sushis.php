@@ -1,5 +1,5 @@
 <?php
-require_once ('./Modules/db_conn.php');
+require_once ('../Modules/db_conn.php');
 global $pdo;
 function getSushis(){
     global $pdo;
