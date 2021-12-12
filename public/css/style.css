@@ -1,0 +1,12 @@
+.custom-cnt{
+    background: url("../img/sushibackground.jpg");
+    padding-top: 20px;
+    background-size: cover;
+    height: 100%;
+    padding-bottom: 20px;
+}
+.custom-img{
+    height: 10rem;
+    width: 15rem;
+    border-radius: 30px;
+}

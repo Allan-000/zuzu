@@ -13,3 +13,20 @@ function getSushis(){
         echo $e->getMessage();
     }
 }
+
+
+function getSushiDetails($id){
+    global $pdo;
+    try{
+        $query=$pdo->prepare('SELECT * FROM sushis WHERE id=:id');
+        $query->bindParam('id',$id);
+        $query->execute();
+        $sushiDetails=$query->fetchAll(PDO::FETCH_CLASS);
+
+        return $sushiDetails;
+
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
