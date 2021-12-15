@@ -10,3 +10,14 @@
     width: 15rem;
     border-radius: 30px;
 }
+.custom-cart{
+    background-color:transparent;
+    color: white;
+    transform: scale(3);
+
+}
+.backward{
+    height: 2rem;
+    transform: rotateY(180deg);
+
+}

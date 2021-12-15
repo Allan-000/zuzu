@@ -11,8 +11,10 @@ require_once ('../Modules/Sushis.php');
 $sushis=getSushis();
 ?>
 <div class="container custom-cnt">
-    <div class=" p-5"></div>
-    <h4 class="text-center text-light bg-secondary py-3">Sushis Lijst</h4>
+    <div class=" p-2"></div>
+    <a class="float-end" href="/cart"><button class="btn btn-light px-5"><img class="custom-cart py-3" src="../public/img/cart.svg" alt=""></button></a>
+    <div class=" p-4"></div>
+    <h4 class="text-center text-light bg-secondary my-5 py-3">Sushis Lijst</h4>
     <div class="container">
         <?php
         foreach ($sushis as $sushi){
@@ -30,6 +32,7 @@ $sushis=getSushis();
                 </div>";
         }
         ?>
+
     </div>
 </div>
 <br>
