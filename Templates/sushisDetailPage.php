@@ -32,7 +32,8 @@ global $sushiDetails;
         echo "<div class='d-flex text-light justify-content-center'><h4>Mega Prijs drop : $sushiPrice €</h4></div><br>";
         echo "<form method='post'>
                 <div class='d-flex justify-content-center'>
-                    <input type='submit' name='order' class='btn btn-success' value='Toevoegen'>
+                    <input type='submit' name='order' class='btn btn-success mx-1' value='Toevoegen'>
+                    <input type='number' name='amount-to-order' class='mx-1' placeholder='Hoeveel wilt u'>
                 </div>
               </form>";
     }

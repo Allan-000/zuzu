@@ -62,15 +62,28 @@ switch ($params[1]){
             $sushiDetails=getSushiDetails($sushiId);
         }
         if(isset($_POST['order'])){
-            $_SESSION['orderdItems']=$sushiId;
-            $addedItem=addItem($sushiId,$customerId);
-            $addItemMssg="<h6 class='alert w-50 alert-success mx-auto my-2 text-center'>Toegevoegd aan winkel mandje</h6>";
+            $amountToOrderInString=filter_input(INPUT_POST,'amount-to-order',FILTER_SANITIZE_NUMBER_INT);
+
+            if($amountToOrderInString!=''){
+                $amountToOrder=intval($amountToOrderInString);
+                if($amountToOrder>10){
+                    $addItemMssg="<h6 class='alert w-50 alert-warning mx-auto my-2 text-center'>Er zijn maar 10 stuks op voorraad</h6>";
+                }
+                else{
+                    $_SESSION['orderdItems']=$sushiId;
+                    $addedItem=addItem($sushiId,$customerId,$amountToOrder);
+                    $addItemMssg="<h6 class='alert w-50 alert-success mx-auto my-2 text-center'>Toegevoegd aan winkel mandje</h6>";
+                }
+            }
+            else{
+                $addItemMssg="<h6 class='alert w-50 alert-warning mx-auto my-2 text-center'>Hoeveel sushis wilt u bestellen?</h6>";
+            }
         }
         include_once('../Templates/sushisDetailPage.php');
         break;
     case 'cart':
-        $toShowItems=showItems();
-        var_dump($toShowItems);
+        $customerId=intval($_SESSION['customer'][0]->id);
+        $toShowItems=showItems($customerId);
         include_once ('../Templates/cart.php');
         break;
 }
