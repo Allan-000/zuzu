@@ -24,3 +24,10 @@
 .trash-can{
     color: #0dcaf0;
 }
+.check-out{
+    height: 100px;
+    width: 100px;
+    background-color: lightgreen;
+    border: 2px solid lightgreen;
+    border-radius: 100%;
+}

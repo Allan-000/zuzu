@@ -18,6 +18,8 @@ $params=explode('/',$request);
 
 $loginMssError='';
 $addItemMssg='';
+$customer='';
+$addesCustomer='';
 switch ($params[1]){
     case '':
         include_once('../Templates/home.php');
@@ -41,13 +43,10 @@ switch ($params[1]){
                     $_SESSION['customer']=$addesCustomer;
                 }
                 header("Location: /sushisMasterPage");
-
             }
             else{
                 $loginMssError="<h5 class='alert alert-danger m-auto text-center'>Niet alle velden zijn ingevuld</h5>";
             }
-
-
         }
         include_once('../Templates/loginForm.php');
         break;
@@ -85,6 +84,10 @@ switch ($params[1]){
         $customerId=intval($_SESSION['customer'][0]->id);
         $toShowItems=showItems($customerId);
         include_once ('../Templates/cart.php');
+        break;
+    case 'ordersOverview';
+
+        include_once ('../Templates/ordersOverview.php');
         break;
 }
 
